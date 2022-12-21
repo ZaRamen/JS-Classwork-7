@@ -17,7 +17,7 @@
             tmpCtr.counter = 0;
             tmpCtr.started = false;
 
-            tmpCtr.startButton = doucment.createElement("button");
+            tmpCtr.startButton = document.createElement("button");
             tmpCtr.startButton.innerHTML  = "Start Counter";
             tmpCtr.startButton.myCounter = tmpCtr;
 
@@ -33,7 +33,7 @@
                     }, 1000);
                 }
             });
-            tmpCtr.stopButton = doucment.createElement("button");
+            tmpCtr.stopButton = document.createElement("button");
             tmpCtr.stopButton.innerHTML = "Stop Counter";
             tmpCtr.stopButton.myCounter = tmpCtr;
             tmpCtr.stopButton.addEventListener("click", function()
@@ -46,9 +46,9 @@
             tmpCtr.counterDisplay.innerHTML = " " + 0;
 
             countersOut.appendChild(document.createElement("hr"));
-            countersOut.createElement(tmpCtr.startButton);
-            countersOut.createElement(tmpCtr.stopButton);
-            countersOut.createElement(tmpCtr.counterDisplay);
+            countersOut.appendChild(tmpCtr.startButton);
+            countersOut.appendChild(tmpCtr.stopButton);
+            countersOut.appendChild(tmpCtr.counterDisplay);
 
             counterList.push(tmpCtr);
         }
