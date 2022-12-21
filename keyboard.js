@@ -7,11 +7,24 @@ function intialize()
     keyLog = "";
     xCoord = 250;
     yCoord = 340;
-
+    counter = 0;
+}
+function startCounter()
+{
+    counterTimer = setInterval(count, 100);
+    console.log(counterTimer);
+}
+function count(){
+    counter++;
+    if (counter > 1000)
+    {
+        clearInterval(counterTimer);
+    }
+    display();
 }
 function display()
 {
-    keyLogOut.innerHTML = keyLog;
+    keyLogOut.innerHTML = keyLog + " " + counter;
     purpleCar.style.top = yCoord + "px";
     purpleCar.style.left = xCoord + "px";
 }
