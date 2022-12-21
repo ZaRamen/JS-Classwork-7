@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function intialize()
+        {
+            countersOut = document.getElementById("ctrs");
+            counterList = [];
+        }
+        function addCounter()
+        {
+            var tmpCtr = {};
+            tmpCtr.counter = 0;
+            tmpCtr.started = false;
+
+            tmpCtr.startButton = doucment.createElement("button");
+            tmpCtr.startButton.innerHTML  = "Start Counter";
+            tmpCtr.startButton.myCounter = tmpCtr;
+
+            tmpCtr.startButton.addEventListener("click", function()
+            {
+                if (!this.myCounter.started)
+                {
+                    this.myCounter.startButton = false;
+                    this.myCounter.timerId = setInterval(function()
+                    {
+                        tmpCtr.counter++;
+                        display();
+                    }, 1000);
+                }
+            });
+            tmpCtr.stopButton = doucment.createElement("button");
+            tmpCtr.stopButton.innerHTML = "Stop Counter";
+            tmpCtr.stopButton.myCounter = tmpCtr;
+            tmpCtr.stopButton.addEventListener("click", function()
+            {
+                clearInterval(this.myCounter.timerId);
+                this.myCounter.started = false;
+            });
+
+            tmpCtr.counterDisplay = document.createElement("span");
+            tmpCtr.counterDisplay.innerHTML = " " + 0;
+
+            countersOut.appendChild(document.createElement("hr"));
+            countersOut.createElement(tmpCtr.startButton);
+            countersOut.createElement(tmpCtr.stopButton);
+            countersOut.createElement(tmpCtr.counterDisplay);
+
+            counterList.push(tmpCtr);
+        }
+        function display()
+        {
+            for (var i = 0; i < counterList.length; i++)
+            {
+                counterList[i].counterDisplay.innerHTML = " " + counterList[i].counter;
+            }
+        }
+    </script>
+</head>
+<body onload="intialize();">
+    <button onclick="addCounter();"> Add Counter </button>
+    <div id="ctrs"></div>
+</body>
+</html>
